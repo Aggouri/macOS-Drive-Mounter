@@ -8,7 +8,7 @@
 
 # --- Configuration ---
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-DRIVES_FILE="${SCRIPT_DIR}/drives.txt"
+DRIVES_FILE="${1:-${SCRIPT_DIR}/drives.txt}"
 LOCK_FILE="/tmp/macos_drive_mounter.lock"
 STATE_DIR="${HOME}/.local/state/macos_drive_mounter"
 NOTIFICATION_COOLDOWN_FILE="${STATE_DIR}/notification_sent"

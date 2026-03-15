@@ -16,6 +16,7 @@ RUN_INTERVAL=30
 # This makes the solution portable, allowing the folder to be anywhere.
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 SCRIPT_PATH="${SCRIPT_DIR}/mount_drives.sh"
+DRIVES_FILE="${1:-${SCRIPT_DIR}/drives.txt}"
 AGENT_PATH="${HOME}/Library/LaunchAgents/${AGENT_LABEL}.plist"
 
 # --- Create the launchd Agent .plist file ---
@@ -31,6 +32,7 @@ cat <<EOF > "${AGENT_PATH}"
     <key>ProgramArguments</key>
     <array>
         <string>${SCRIPT_PATH}</string>
+        <string>${DRIVES_FILE}</string>
     </array>
     <key>StartInterval</key>
     <integer>${RUN_INTERVAL}</integer>
@@ -50,4 +52,4 @@ echo ""
 echo "✅ Installation Complete!"
 echo "The script is now active and will run every ${RUN_INTERVAL} seconds."
 echo "You can place the 'macOS-Drive-Mounter' folder anywhere, but do not move it after installation."
-echo "If you move the folder, simply run this installer again from the new location."
+echo "If you move the folder or the drives file, simply run this installer again from the new location."

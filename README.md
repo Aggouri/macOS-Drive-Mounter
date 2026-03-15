@@ -2,6 +2,14 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+---
+
+**Differences with upstream**:
+- pick a custom drive configuration file, so that it is stored separately from the script location
+- the scripts are already executable
+
+---
+
 A simple, robust, and persistent tool to automatically mount your network drives on macOS and keep them connected.
 
 This script solves the common frustration of macOS dropping connections to network shares after waking from sleep or changing networks. It uses the same reliable mounting engine as Finder's "Go > Connect to Server" feature, ensuring the highest level of compatibility.
@@ -30,7 +38,7 @@ Clone or download this repository to a permanent location on your Mac (e.g., in 
 
 ```bash
 # Clone the repository using Git
-git clone https://github.com/your-username/macOS-Drive-Mounter.git
+git clone https://github.com/Aggouri/macOS-Drive-Mounter.git
 ```
 
 _Or, download the ZIP and extract it._
@@ -38,9 +46,15 @@ _Or, download the ZIP and extract it._
 ### Step 2: Configure Your Drives
 
 Before activating the script, tell it which drives to mount.
+By default, the script uses the `drives.txt` file that is collocated with the script, but you can choose to use any other file.
 
+To use the existing `drives.txt` file:
 1.  Open the `drives.txt` file in a text editor.
 2.  Replace the generic examples with your own server details using the 4-column format.
+
+To use another file:
+1. Copy the existing `drives.txt` file to your desired location, using any filename you want.
+2. Replace the generic examples with your own server details using the 4-column format.
 
 ```
 # --- FORMAT ---
@@ -75,9 +89,19 @@ chmod +x *.sh
 
 This command will set up the background service and run the script for the first time.
 
+If using the default `drives.txt` file, run:
+
 ```bash
 ./install.sh
 ```
+
+If using a custom file, run:
+
+```bash
+./install.sh path/to/file
+```
+
+> `path/to/file` is the path to the custom file
 
 ### Step 6: Approve One-Time Security Prompts
 
